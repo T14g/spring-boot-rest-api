@@ -19,6 +19,62 @@ public class MathController {
         }
         return convertToDouble(numberOne) + convertToDouble(numberTwo);
     }
+    
+    @RequestMapping("/sub/{numberOne}/{numberTwo}")
+    public Double sub(
+            @PathVariable("numberOne") String numberOne,
+            @PathVariable("numberTwo") String numberTwo) {
+        if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+            throw new UnsupportedMathOperationException("Invalid number");
+        }
+        return convertToDouble(numberOne) - convertToDouble(numberTwo);
+    }
+
+    @RequestMapping("/mul/{numberOne}/{numberTwo}")
+    public Double mul(
+            @PathVariable("numberOne") String numberOne,
+            @PathVariable("numberTwo") String numberTwo) {
+        if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+            throw new UnsupportedMathOperationException("Invalid number");
+        }
+        return convertToDouble(numberOne) * convertToDouble(numberTwo);
+    }
+
+    @RequestMapping("/div/{numberOne}/{numberTwo}")
+    public Double div(
+            @PathVariable("numberOne") String numberOne,
+            @PathVariable("numberTwo") String numberTwo) {
+        if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+            throw new UnsupportedMathOperationException("Invalid number");
+        }
+        Double divisor = convertToDouble(numberTwo);
+        if (divisor == 0D) {
+            throw new UnsupportedMathOperationException("Division by zero");
+        }
+        return convertToDouble(numberOne) / divisor;
+    }
+
+    @RequestMapping("/avg/{numberOne}/{numberTwo}")
+    public Double avg(
+            @PathVariable("numberOne") String numberOne,
+            @PathVariable("numberTwo") String numberTwo) {
+        if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+            throw new UnsupportedMathOperationException("Invalid number");
+        }
+        return (convertToDouble(numberOne) + convertToDouble(numberTwo)) / 2D;
+    }
+
+    @RequestMapping("/sqrt/{number}")
+    public Double sqrt(@PathVariable("number") String number) {
+        if (!isNumeric(number)) {
+            throw new UnsupportedMathOperationException("Invalid number");
+        }
+        Double value = convertToDouble(number);
+        if (value < 0D) {
+            throw new UnsupportedMathOperationException("Square root of negative number");
+        }
+        return Math.sqrt(value);
+    }
 
     private boolean isNumeric(String strNumber) {
         if (strNumber == null || strNumber.isBlank()) {
