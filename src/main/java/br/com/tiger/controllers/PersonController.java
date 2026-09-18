@@ -1,0 +1,24 @@
+package br.com.tiger.controllers;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.beans.factory.annotation.Autowired;
+import br.com.tiger.request.converters.PersonServices;
+import br.com.tiger.model.Person;
+
+@RestController
+@RequestMapping("/person")
+public class PersonController {
+    @Autowired // para injetar a dependencia do PersonServices
+    private PersonServices service;
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public Person findById(@PathVariable("id") String id) {
+        return service.findById(id);
+    }
+}
