@@ -48,7 +48,7 @@ A API sobe em `http://localhost:8080`.
 | Método | URL | Descrição |
 |--------|-----|-----------|
 | GET | `/greeting` | Hello, World! |
-| GET | `/greeting?name=Tiago` | Hello, Tiago! |
+| GET | `/greeting?name=John` | Hello, John! |
 
 ### Person
 
@@ -66,9 +66,9 @@ Exemplo de body:
 
 ```json
 {
-  "firstName": "Tiago",
-  "lastName": "Silva",
-  "address": "Porto Alegre rs",
+  "firstName": "John",
+  "lastName": "Doe",
+  "address": "New York City, New York, US",
   "gender": "Male"
 }
 ```
@@ -78,9 +78,9 @@ PUT inclui o `id`:
 ```json
 {
   "id": 1,
-  "firstName": "Tiago",
-  "lastName": "Silva",
-  "address": "Porto Alegre rs",
+  "firstName": "John",
+  "lastName": "Doe",
+  "address": "New York City, New York, US",
   "gender": "Male"
 }
 ```

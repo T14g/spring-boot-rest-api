@@ -7,7 +7,7 @@ API REST com Spring Boot 3 (Java 21). Entrada: `Startup` + `@SpringBootApplicati
 - `@RestController` — classe que devolve JSON (não página HTML).
 - `@RequestMapping` — URL do recurso (`/greeting`, `/person`).
 - `@PathVariable` — valor na URL (`/person/1`).
-- `@RequestParam` — query string (`/greeting?name=Tiago`).
+- `@RequestParam` — query string (`/greeting?name=John`).
 
 `GreetingController` usa query param. `PersonController` usa path.
 
@@ -43,7 +43,7 @@ O controller não monta `Person` na mão. Spring injeta o service (`@Autowired` 
 
 ## Endpoints
 
-- `GET /greeting?name=Tiago`
+- `GET /greeting?name=John`
 - `GET /person` e `GET /person/{id}`
 - `POST /person` e `PUT /person`
 - `DELETE /person/{id}`
