@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
-import br.com.tiger.request.converters.PersonServices;
+import br.com.tiger.services.PersonServices;
 import br.com.tiger.model.Person;
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person findById(@PathVariable("id") String id) {
+    public Person findById(@PathVariable("id") Long id) {
         return service.findById(id);
     }
 
@@ -40,7 +40,7 @@ public class PersonController {
     }
 
     @RequestMapping(value = { "/{id}" }, method = RequestMethod.DELETE)
-    public void deletePerson(@PathVariable("id") String id) {
+    public void deletePerson(@PathVariable("id") Long id) {
         service.deletePerson(id);
     }
 }
